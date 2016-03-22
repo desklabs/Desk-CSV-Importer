@@ -38,3 +38,5 @@ build/
 .ruby-gemset
 
 .ruby-version
+
+.env
