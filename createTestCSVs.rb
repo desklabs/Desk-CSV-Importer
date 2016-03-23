@@ -26,11 +26,11 @@ CSV.open("CSV_Files/YY_MM_DD_customer.csv", "wb") do |csv|
   50.times do |i|
     id = Random.rand(rand_limit)
     customer_ids << id
-    in_comp = Random.rand(3)
-    if in_comp <=1
-      csv << [i, Faker::Name.first_name,Faker::Name.last_name]
+    #in_comp = Random.rand(3)
+    if Faker::Boolean.boolean(0.7)
+      csv << [id, Faker::Name.first_name,Faker::Name.last_name]
     else
-      csv << [i, Faker::Name.first_name,Faker::Name.last_name, company_ids.sample]
+      csv << [id, Faker::Name.first_name,Faker::Name.last_name, company_ids.sample]
     end
   end
 end
@@ -84,4 +84,4 @@ CSV.open("CSV_Files/YY_MM_DD_case.csv", "wb") do |csv|
 end
 
 
-#binding.pry
+binding.pry
