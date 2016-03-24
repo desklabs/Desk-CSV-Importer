@@ -40,3 +40,7 @@ build/
 .ruby-version
 
 .env
+
+*.lock
+CSV_Files/*
+*.csv
