@@ -38,8 +38,9 @@ build/
 .ruby-gemset
 
 .ruby-version
-*.csv
 
 .env
 
 *.lock
+CSV_Files/*
+*.csv
