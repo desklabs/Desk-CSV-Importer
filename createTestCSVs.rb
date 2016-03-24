@@ -6,6 +6,10 @@ Bundler.require(:default)
 
 #binding.pry
 
+if !File.exists?("./CSV_Files")
+  Dir.mkdir 'CSV_Files'
+end
+
 todays_date_string = Date.today.year.to_s + "_" + Date.today.month.to_s + "_" + Date.today.day.to_s
 
 rand_limit = 100000000
