@@ -1,10 +1,11 @@
+puts "Initializing"
+
 require 'rubygems'
 require 'bundler/setup'
 require 'dotenv'
 require 'csv'
 Bundler.require(:default)
 
-#binding.pry
 
 if !File.exists?("./CSV_Files")
   Dir.mkdir 'CSV_Files'
@@ -14,12 +15,22 @@ todays_date_string = Date.today.year.to_s + "_" + Date.today.month.to_s + "_" + 
 
 rand_limit = 100000000
 
+id_pool = []
+
+cli = HighLine.new
+
+5000.times do |i|
+  id_pool << Random.rand(rand_limit)
+end
+id_pool = id_pool.uniq
+#binding.pry
+
 puts "Creating Company CSV"
 company_ids = []
 CSV.open("CSV_Files/#{todays_date_string}_company.csv", "wb") do |csv|
   csv << ["Id","Name"]
   50.times do |i|
-    id = Random.rand(rand_limit)
+    id = id_pool.pop
     company_ids << id
     csv << [id, Faker::Company.name]
   end
@@ -30,7 +41,7 @@ customer_ids = []
 CSV.open("CSV_Files/#{todays_date_string}_customer.csv", "wb") do |csv|
   csv << ["Id","FirstName","LastName","CompanyId"]
   50.times do |i|
-    id = Random.rand(rand_limit)
+    id = id_pool.pop
     customer_ids << id
     #in_comp = Random.rand(3)
     if Faker::Boolean.boolean(0.7)
@@ -46,7 +57,7 @@ group_ids = []
 CSV.open("CSV_Files/#{todays_date_string}_group.csv", "wb") do |csv|
   csv << ["Id","Name"]
   8.times do |i|
-    id = Random.rand(rand_limit)
+    id = id_pool.pop
     group_ids << id
     csv << [id, Faker::Commerce.department(1)]
   end
@@ -57,7 +68,7 @@ user_ids = []
 CSV.open("CSV_Files/#{todays_date_string}_user.csv", "wb") do |csv|
   csv << ["Id","Name","Email"]
   20.times do |i|
-    id = Random.rand(rand_limit)
+    id = id_pool.pop
     user_ids << id
     csv << [id, Faker::Name.name,Faker::Internet.safe_email]
   end
@@ -70,8 +81,7 @@ cases = []
 CSV.open("CSV_Files/#{todays_date_string}_case.csv", "wb") do |csv|
   csv << ["Id","CustomerId","Subject","Status","CreatedAt","UpdatedAt","UserId","GroupId"]
   50.times do |i|
-    id = Random.rand(rand_limit)
-    #case_ids << id
+    id = id_pool.pop
 
     status = statuses.sample
     created_at = Faker::Time.backward(14, :evening).to_datetime.new_offset(0).iso8601
@@ -93,17 +103,34 @@ puts "Creating Notes CSV"
 note_ids = []
 CSV.open("CSV_Files/#{todays_date_string}_notes.csv", "wb") do |csv|
   csv << ["Id","CaseId","UserId","CreatedAt","Body"]
-  200.times do |i|
+  500.times do |i|
 
     case_ = cases.sample
     case_created_at = case_[:created_at]
     case_id = case_[:id]
 
-    id = Random.rand(rand_limit)
+    id = id_pool.pop
     csv << [id, case_id,user_ids.sample, Faker::Time.between(case_created_at, DateTime.now).to_datetime.new_offset(0).iso8601, Faker::Hipster.paragraph(2)]
 
   end
 end
 
+puts "Creating Replies CSV"
+directions = ["in","out"]
+reply_ids = []
+CSV.open("CSV_Files/#{todays_date_string}_replies.csv", "wb") do |csv|
 
-binding.pry
+  csv << ["Id","CaseId","UserId","CreatedAt","Body","Direction"]
+  500.times do |i|
+    case_ = cases.sample
+    case_created_at = case_[:created_at]
+    case_id = case_[:id]
+
+    id = id_pool.pop
+    csv << [id, case_id,user_ids.sample, Faker::Time.between(case_created_at, DateTime.now).to_datetime.new_offset(0).iso8601, Faker::Hipster.paragraph(2), directions.sample]
+
+  end
+
+end
+
+#binding.pry

@@ -33,14 +33,13 @@ build/
 # .ruby-gemset
 
 # unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
-.rvmrc
+#.rvmrc
 
-.ruby-gemset
+#.ruby-gemset
 
-.ruby-version
+#.ruby-version
 
 .env
 
-*.lock
-CSV_Files/*
-*.csv
+#CSV_Files/*
+#*.csv
