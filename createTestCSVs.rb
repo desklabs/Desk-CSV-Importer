@@ -40,16 +40,37 @@ end
 puts "Creating Customer CSV"
 customer_ids = []
 CSV.open("CSV_Files/#{todays_date_string}_customer.csv", "wb") do |csv|
-  csv << ["Id","FirstName","LastName","CompanyId"]
+  csv << ["Id","FirstName","LastName","Title","Emails","CompanyId"]
   50.times do |i|
+    row =[]
     id = id_pool.pop
     customer_ids << id
-    #in_comp = Random.rand(3)
-    if Faker::Boolean.boolean(0.7)
-      csv << [id, Faker::Name.first_name,Faker::Name.last_name]
+
+    row << id
+
+    f_name = Faker::Name.first_name
+
+    row << f_name
+    row << Faker::Name.last_name
+    if Faker::Boolean.boolean
+      row << Faker::Name.prefix
     else
-      csv << [id, Faker::Name.first_name,Faker::Name.last_name, company_ids.sample]
+      row << ""
     end
+
+    num_emails = Random.rand(5)
+    emails = []
+    num_emails.times do |i|
+      emails << Faker::Internet.safe_email(f_name)
+    end
+    row << emails.uniq.join(",")
+
+    if Faker::Boolean.boolean(0.7)
+      row << ""
+    else
+      row << company_ids.sample
+    end
+    csv << row
   end
 end
 
