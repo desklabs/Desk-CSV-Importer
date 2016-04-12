@@ -42,4 +42,6 @@ build/
 .env
 
 #CSV_Files/*
-#*.csv
+*.csv
+
+.ignore/*
