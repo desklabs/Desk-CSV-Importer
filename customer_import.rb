@@ -18,14 +18,18 @@ CSVFiles = Dir["./CSV_Files/*"]
 
 CSV.foreach(CSVFiles.grep(/customer/)[0], headers: true) do |row|
 
+  data = {
+    first_name: row["FirstName"],
+    last_name: row["LastName"],
+    company: row["Id"]
+  }
+
+  emails_array = []
+  row["Emails"].split(',').each do |email|
+    emails_array << {"type": "work","value": email}
+  end
+  data[:emails] = emails_array
+
   binding.pry
-
-  new_company = DeskApi.customers.create({
-                                           first_name: row["First Name"],
-                                           last_name: row["Last Name"],
-                                           title: row["Title"],
-                                           company: row["Id"],
-                                           emails:
-
-  })
+  new_customer = DeskApi.customers.create(data)
 end
