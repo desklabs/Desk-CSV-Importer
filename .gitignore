@@ -45,3 +45,5 @@ build/
 *.csv
 
 .ignore/*
+
+*.log
