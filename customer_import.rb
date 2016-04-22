@@ -21,7 +21,7 @@ CSV.foreach(CSVFiles.grep(/customer/)[0], headers: true) do |row|
   data = {
     first_name: row["FirstName"],
     last_name: row["LastName"],
-    company: row["Id"]
+    company: row["CompanyId"]
   }
 
   emails_array = []
@@ -30,6 +30,6 @@ CSV.foreach(CSVFiles.grep(/customer/)[0], headers: true) do |row|
   end
   data[:emails] = emails_array
 
-  binding.pry
   new_customer = DeskApi.customers.create(data)
+  binding.pry
 end

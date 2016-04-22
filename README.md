@@ -6,7 +6,8 @@ http://desk-customers.s3.amazonaws.com/wow/migration_services/csv_specification.
 createTestCSVs.rb will generate dummy CSV's with data that checks out.
 
 ## Requirements
- - Ruby 2.0.0
+ - *nix/OSX based computer
+ - Ruby 2.3.0
  - working installation of bundler
 
 ## Installation
