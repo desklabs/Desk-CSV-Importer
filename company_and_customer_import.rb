@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'bundler/setup'
-require 'dotenv'
+#require 'dotenv'
 require 'csv'
 
 Bundler.require(:default)
@@ -23,6 +23,8 @@ DeskApi.configure do |config|
   config.password = ENV['DESK_PASSWORD']
   config.endpoint = ENV['DESK_ENDPOINT']
 end
+
+binding.pry
 
 #######
 # We are going to start by importing companies from this file.
