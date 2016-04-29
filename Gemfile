@@ -1,12 +1,11 @@
 source 'https://rubygems.org'
 
 gem 'dotenv'
-gem 'pry'
 gem 'desk_api'
 gem 'highline'
 gem 'faker'
 gem 'parallel', '~> 1.8'
 gem 'ruby-progressbar'
-#gem 'celluloid-pmap'
-gem 'easy_diff'
+
 gem 'rollbar'
+gem 'pry'
