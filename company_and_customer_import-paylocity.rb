@@ -104,7 +104,8 @@ def process_customer_row(company_hash, customer_error_log, row)
 
   begin
     existing_customer.update(data)
-
+  rescue Exception => e
+    DeskApi.customers.create(data)
   rescue Net::OpenTimeout => e
     binding.pry
   rescue DeskApi::Error => e
@@ -195,11 +196,13 @@ end
 # end
 
 Parallel.each(cust_rows, in_threads: 40, progress: "Working", isolation: true) do |row|
+  tries ||= 3
   begin
     process_customer_row(company_hash, customer_error_log, row)
-  rescue
+  rescue Exception => e
+    customer_error_log.error "Retrying #{row} - #{e}"
     sleep 1
-    retry
+    retry unless (tries -= 1).zero?
   end
 
 end
