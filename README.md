@@ -37,18 +37,25 @@ using a system called RVM to allow you to have multiple versions of Ruby.
 You should read the instructions here: <https://rvm.io/>, but here are the
 terminal commands needed for installation:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+`gpg --keyserver hkp://keys.gnupg.net --recv-keys
+409B6B1796C275462A1703113804BB82D39DC0E3`
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-\curl -sSL https://get.rvm.io | bash -s stable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+`\curl -sSL https://get.rvm.io | bash -s stable`
 
- 
+### Ruby
 
-Once RVM is setup, clone this repository:
+Now with RVM installed, we need to install a fresh version of Ruby:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-git clone https://github.com/desklabs/Desk.com-CSV-to-Case.git
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+`rvm install 2.3.0`
+
+Now, clone this repository:
+
+`git clone https://github.com/desklabs/Desk.com-CSV-to-Case.git`
+
+Then cd into the directory:
+
+`cd Desk.com-CSV-to-Case`
+
+Since we have RVM installed, a new gemset will be created for us. The files
+.ruby-version and .ruby-gemset will team RVM to always switch to the proper
+version and gemset when we enter the directory.
