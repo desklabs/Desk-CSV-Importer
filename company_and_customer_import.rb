@@ -41,13 +41,14 @@ company_hash = {}
 # Loop through the company CSV file defined above
 ######
 CSV.foreach(company_csv_file, headers: true) do |row|
+
   # Store the name and id into our hash from before
-  company_hash[row["id"]] = row["name"]
+  company_hash[row["Id"]] = row["Name"]
 
   # Build our data hash to for the new company
   data = {
-    name: row["name"],
-    external_id: row["id"],
+    name: row["Name"],
+    external_id: row["Id"],
     domains: row["domains"]
   }
 
@@ -99,7 +100,7 @@ CSV.foreach(company_csv_file, headers: true) do |row|
 
   row.to_h.each do |key, value|
     if key.include? "custom_"
-      custom_fields[key.gsub("custom_","").to_sym] = value unless value.nil?
+      custom_fields[key.gsub("custom_","").to_sym] = value unless value == ""
     end
   end
 
@@ -112,7 +113,7 @@ CSV.foreach(company_csv_file, headers: true) do |row|
   row.to_h.each do |key, value|
     if key.include? "email_"
       type = key.gsub("email_","")
-      emails_array << {"type": type, "value": value} unless value.nil?
+      emails_array << {"type": type, "value": value} unless value == ""
     end
   end
 
@@ -124,7 +125,7 @@ CSV.foreach(company_csv_file, headers: true) do |row|
   row.to_h.each do |key, value|
     if key.include? "phone_"
       type = key.gsub("phone_","")
-      phones_array << {"type": type, "value": value} unless value.nil?
+      phones_array << {"type": type, "value": value} unless value == ""
     end
   end
 
@@ -133,9 +134,10 @@ CSV.foreach(company_csv_file, headers: true) do |row|
   begin
     new_customer = DeskApi.customers.create(data)
   rescue DeskApi::Error => e
+    binding.pry
     puts "Error creating customer: #{row['Name']} - #{e.errors}"
     customer_error_log.error "Error creating customer: #{row['Name']} - #{e.errors}"
   else
-    puts "Success creating customer: #{row['Name']}"
+    puts "Success creating customer: #{emails_array[0][:value]}"
   end
 end

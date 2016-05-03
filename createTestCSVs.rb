@@ -28,7 +28,7 @@ puts "Creating Company CSV"
 company_ids = []
 CSV.open("CSV_Files/companies.csv", "wb") do |csv|
   csv << ["Id","Name"]
-  50.times do |i|
+  10.times do |i|
     id = id_pool.pop
     company_ids << id
     csv << [id, Faker::Company.name]
