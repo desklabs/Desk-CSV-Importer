@@ -18,7 +18,8 @@ Requirements
 
 -   working installation of bundler
 
--   git
+-   git (The simplest way is to install the desktop app here:
+    <https://desktop.github.com/>)
 
 Installation
 ------------
@@ -48,6 +49,8 @@ Now with RVM installed, we need to install a fresh version of Ruby:
 
 `rvm install 2.3.0`
 
+### Script
+
 Now, clone this repository:
 
 `git clone https://github.com/desklabs/Desk.com-CSV-to-Case.git`
@@ -59,3 +62,5 @@ Then cd into the directory:
 Since we have RVM installed, a new gemset will be created for us. The files
 .ruby-version and .ruby-gemset will team RVM to always switch to the proper
 version and gemset when we enter the directory.
+
+ 
