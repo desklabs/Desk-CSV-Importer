@@ -49,7 +49,7 @@ Now with RVM installed, we need to install a fresh version of Ruby:
 
 `rvm install 2.3.0`
 
-### Script
+### Script setup
 
 Now, clone this repository:
 
@@ -59,8 +59,20 @@ Then cd into the directory:
 
 `cd Desk.com-CSV-to-Case`
 
-Since we have RVM installed, a new gemset will be created for us. The files
-.ruby-version and .ruby-gemset will team RVM to always switch to the proper
-version and gemset when we enter the directory.
+Since we have RVM installed, the files .ruby-version and .ruby-gemset will team
+RVM to always switch to the proper version and gemset when we enter the
+directory. A new gemset will be created for us the first time we enter the
+directory.
 
- 
+Now we need to install bundler, a package management system for Ruby:
+
+`gem install bundler`
+
+and use bundler to install the rest of the gems we need:
+
+`bundle install`
+
+Once this is complete, we are ready.
+
+Usage
+-----
