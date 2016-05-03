@@ -41,16 +41,32 @@ company_hash = {}
 # Loop through the company CSV file defined above
 ######
 CSV.foreach(company_csv_file, headers: true) do |row|
-  break
+  binding.pry
   # Store the name and id into our hash from before
-  company_hash[row["Id"]] = row["Name"]
-  # create a company for the row
-  begin
-    new_company = DeskApi.companies.create({
-                                             name: row["Name"],
-                                             external_id: row["Id"]
+  company_hash[row["id"]] = row["name"]
 
-    })
+  # Build our data hash to for the new company
+  data = {
+    name: row["name"],
+    external_id: row["id"],
+    domains: row["domains"]
+  }
+
+  # look for our custom fields and add them to the data hash if found
+  custom_fields = {}
+
+  row.to_h.each do |key, value|
+    if key.include? "custom_"
+      custom_fields[key.gsub("custom_","").to_sym] = value unless value.nil?
+    end
+  end
+
+  data[:custom_fields] = custom_fields unless custom_fields == {}
+
+
+  #   # create a company for the row
+  begin
+    new_company = DeskApi.companies.create(data)
     # if it fails, log it in the error log
   rescue DeskApi::Error => e
     puts "Error creating company: #{row['Name']} - #{e.errors}"
@@ -79,11 +95,41 @@ CSV.foreach(company_csv_file, headers: true) do |row|
     company: company_hash[row["CompanyId"]]
   }
 
-  emails_array = []
-  row["Emails"].split(',').each do |email|
-    emails_array << {"type": "work","value": email}
+  # look for our custom fields and add them to the data hash if found
+  custom_fields = {}
+
+  row.to_h.each do |key, value|
+    if key.include? "custom_"
+      custom_fields[key.gsub("custom_","").to_sym] = value unless value.nil?
+    end
   end
+
+  data[:custom_fields] = custom_fields unless custom_fields == {}
+
+
+  # look for any email_ columns and add them to the data hash
+  emails_array = []
+
+  row.to_h.each do |key, value|
+    if key.include? "email_"
+      type = key.gsub("email_","")
+      emails_array << {"type": type, "value": value} unless value.nil?
+    end
+  end
+
   data[:emails] = emails_array
+
+  phones_array = []
+
+  row.to_h.each do |key, value|
+    if key.include? "phone_"
+      type = key.gsub("phone_","")
+      phones_array << {"type": type, "value": value} unless value.nil?
+    end
+  end
+
+  data[:phones] = phones_array
+
   begin
     new_customer = DeskApi.customers.create(data)
   rescue DeskApi::Error => e

@@ -11,12 +11,14 @@ createTestCSVs.rb will generate dummy CSV's with data that checks out.
 Requirements
 ------------
 
--   \*nix/OSX based computer (this could change if I nail down Windows
-    instructions below)
+-   \*nix/OSX based computer (this could change when I nail down Windows
+    instructions)
 
 -   Ruby 2.3.0
 
 -   working installation of bundler
+
+-   git
 
 Installation
 ------------
@@ -27,7 +29,7 @@ differ depending on which OS you are using.
 OSX
 ---
 
-If you are using OSX, you already have Ruby installed.  However, I recommend
+If you are using OSX, you already have Ruby installed. However, I recommend
 using a system called RVM to allow you to have multiple versions of Ruby.
 
 ### RVM
@@ -42,3 +44,9 @@ gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB8
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 \curl -sSL https://get.rvm.io | bash -s stable
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ 
+
+Once RVM is setup, clone this repository:
+
+git clone
