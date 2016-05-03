@@ -6,6 +6,8 @@ specified below into desk.com.
 
 http://desk-customers.s3.amazonaws.com/wow/migration\_services/csv\_specification.html
 
+ 
+
 createTestCSVs.rb will generate dummy CSV's with data that checks out.
 
 Requirements
@@ -83,3 +85,13 @@ our credentials to the .env file.
 
 Usage
 -----
+
+Place your CSV files in the CSV\_Files folder.  They should be named:
+
+-   customers.csv
+
+-   companies.csv
+
+ 
+
+`ruby company_and_customer_import.rb`

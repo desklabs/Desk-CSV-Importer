@@ -29,7 +29,7 @@ end
 # We are going to start by importing companies from this file.
 #######
 puts "Starting Companies"
-company_csv_file = "./CSV_Files/YY_MM_DD_company.csv"
+company_csv_file = "./CSV_Files/companies.csv"
 
 ######
 # Since our cusrtomer CSV file only contains our Company ID from our old system,
@@ -41,7 +41,6 @@ company_hash = {}
 # Loop through the company CSV file defined above
 ######
 CSV.foreach(company_csv_file, headers: true) do |row|
-  binding.pry
   # Store the name and id into our hash from before
   company_hash[row["id"]] = row["name"]
 
@@ -82,7 +81,7 @@ end
 # up the company name's for our customers.
 #######
 puts "Starting Customers"
-company_csv_file = "./CSV_Files/YY_MM_DD_customer.csv"
+company_csv_file = "./CSV_Files/customers.csv"
 
 ######
 # Loop through the customer CSV file defined above
@@ -119,6 +118,7 @@ CSV.foreach(company_csv_file, headers: true) do |row|
 
   data[:emails] = emails_array
 
+  # look for any phone_ columns and add them to the data hash
   phones_array = []
 
   row.to_h.each do |key, value|
