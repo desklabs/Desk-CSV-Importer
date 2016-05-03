@@ -4,8 +4,7 @@ Desk.com-CSV-to-Case
 To import a CSV we are going to write a Ruby script to import CSV files as
 specified below into desk.com.
 
-http://desk-customers.s3.amazonaws.com/wow/migration\_services/csv\_specification.html
-
+http://desk-wow.s3.amazonaws.com/services/csv_specification.html
  
 
 createTestCSVs.rb will generate dummy CSV's with data that checks out.
@@ -95,3 +94,19 @@ Place your CSV files in the CSV\_Files folder.  They should be named:
  
 
 `ruby company_and_customer_import.rb`
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Things left to do
+
+-   finalize CSV spec doc to match this.
+
+-   standardize case of field names
