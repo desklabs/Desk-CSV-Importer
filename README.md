@@ -72,7 +72,14 @@ and use bundler to install the rest of the gems we need:
 
 `bundle install`
 
-Once this is complete, we are ready.
+The last step in configuration is to copy the .env.example file to .env and add
+our credentials to the .env file.
+
+`cp .env.example .env`
+
+`open .env` (this should open a text editor.  Edit and save)
+
+ 
 
 Usage
 -----
