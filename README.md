@@ -70,7 +70,7 @@ Now we need to install bundler, a package management system for Ruby:
 
 `gem install bundler`
 
-and use bundler to install the rest of the gems we need:
+and use bundler to install the rest of the gems we need from our Gemfile:
 
 `bundle install`
 

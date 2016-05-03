@@ -40,7 +40,7 @@ end
 puts "Creating Customer CSV"
 customer_ids = []
 CSV.open("CSV_Files/#{todays_date_string}_customer.csv", "wb") do |csv|
-  csv << ["Id","FirstName","LastName","Title","Emails","CompanyId"]
+  csv << ["Id","FirstName","LastName","Title","email_home", "email_work", "email_other","CompanyId"]
   50.times do |i|
     row =[]
     id = id_pool.pop
@@ -51,19 +51,33 @@ CSV.open("CSV_Files/#{todays_date_string}_customer.csv", "wb") do |csv|
     f_name = Faker::Name.first_name
 
     row << f_name
-    row << Faker::Name.last_name
+
+    l_name = Faker::Name.last_name
+    row << l_name
     if Faker::Boolean.boolean
       row << Faker::Name.prefix
     else
       row << ""
     end
 
-    num_emails = Random.rand(5)
+    num_emails = Random.rand(5) + 1
     emails = []
     num_emails.times do |i|
-      emails << Faker::Internet.safe_email(f_name)
+      emails << Faker::Internet.user_name("#{f_name} #{l_name}", %w(. _ -)) + Faker::Number.number(3) + "@" + Faker::Internet.domain_name
     end
-    row << emails.uniq.join(",")
+    emails = emails.uniq
+    row << emails[0]
+    if !emails[1].nil?
+      row << emails[1]
+    else
+      row << ""
+    end
+
+    if !emails[2].nil?
+      row << emails[2]
+    else
+      row << ""
+    end
 
     if Faker::Boolean.boolean(0.7)
       row << ""

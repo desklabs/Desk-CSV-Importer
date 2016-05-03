@@ -6,3 +6,5 @@ gem 'dotenv'
 gem 'desk_api'
 # Easily generate fake data (https://github.com/stympy/faker)
 gem 'faker'
+
+gem 'pry'
