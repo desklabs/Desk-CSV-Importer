@@ -6,5 +6,6 @@ gem 'dotenv'
 gem 'desk_api'
 # Easily generate fake data (https://github.com/stympy/faker)
 gem 'faker'
-
+# HighLine is a high-level command-line IO library. (https://github.com/JEG2/highline)
+gem 'highline'
 gem 'pry'

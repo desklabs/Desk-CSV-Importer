@@ -11,8 +11,6 @@ if !File.exists?("./CSV_Files")
   Dir.mkdir 'CSV_Files'
 end
 
-#todays_date_string = Date.today.year.to_s + "_" + Date.today.month.to_s + "_" + Date.today.day.to_s
-todays_date_string = "YY_MM_DD"
 
 rand_limit = 100000000
 
@@ -28,7 +26,7 @@ id_pool = id_pool.uniq
 
 puts "Creating Company CSV"
 company_ids = []
-CSV.open("CSV_Files/#{todays_date_string}_company.csv", "wb") do |csv|
+CSV.open("CSV_Files/companies.csv", "wb") do |csv|
   csv << ["Id","Name"]
   50.times do |i|
     id = id_pool.pop
@@ -39,8 +37,8 @@ end
 
 puts "Creating Customer CSV"
 customer_ids = []
-CSV.open("CSV_Files/#{todays_date_string}_customer.csv", "wb") do |csv|
-  csv << ["Id","FirstName","LastName","Title","email_home", "email_work", "email_other","CompanyId"]
+CSV.open("CSV_Files/customers.csv", "wb") do |csv|
+  csv << ["Id","FirstName","LastName","Title","email_home", "email_work", "email_other","phone_home","phone_work","CompanyId"]
   50.times do |i|
     row =[]
     id = id_pool.pop
@@ -79,6 +77,19 @@ CSV.open("CSV_Files/#{todays_date_string}_customer.csv", "wb") do |csv|
       row << ""
     end
 
+    num_phones = Random.rand(5) + 1
+    phones = []
+    num_phones.times do |i|
+      phones << Faker::PhoneNumber.phone_number
+    end
+    phones = phones.uniq
+    row << phones[0]
+    if !phones[1].nil?
+      row << phones[1]
+    else
+      row << ""
+    end
+
     if Faker::Boolean.boolean(0.7)
       row << ""
     else
@@ -87,6 +98,8 @@ CSV.open("CSV_Files/#{todays_date_string}_customer.csv", "wb") do |csv|
     csv << row
   end
 end
+
+abort
 
 puts "Creating Group CSV"
 group_ids = []
