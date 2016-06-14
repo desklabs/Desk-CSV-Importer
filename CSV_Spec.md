@@ -1,6 +1,7 @@
 CSV Spec:
+---------
 
-Companies:
+### Companies:
 
 Every company has 1 value for each of these fields: id, name. If you do not have
 something for the id field, you can just use a serial number, i.e. 1,2,3...  
@@ -23,7 +24,7 @@ custom field with the format:
 
  
 
-Customers:
+### Customers:
 
 Every customer has 1 value for each of these fields: id, first\_name,
 last\_name, title and company\_id.  If you do not have something for the id
