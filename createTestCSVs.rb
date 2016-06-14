@@ -27,19 +27,26 @@ id_pool = id_pool.uniq
 puts "Creating Company CSV"
 company_ids = []
 CSV.open("CSV_Files/companies.csv", "wb") do |csv|
-  csv << ["Id","Name"]
+  csv << ["id","name","domains"]
   10.times do |i|
     id = id_pool.pop
     company_ids << id
-    csv << [id, Faker::Company.name]
+    domains = []
+
+    num_domains = Random.rand(2) + 1
+    num_domains.times do |i|
+      domains << [Faker::Internet.domain_name]
+    end
+
+    csv << [id, Faker::Company.name, domains.join(",")]
   end
 end
 
 puts "Creating Customer CSV"
 customer_ids = []
 CSV.open("CSV_Files/customers.csv", "wb") do |csv|
-  csv << ["Id","FirstName","LastName","Title","email_home", "email_work", "email_other","phone_home","phone_work","CompanyId"]
-  50.times do |i|
+  csv << ["id","first_name","last_name","title","email_home", "email_work", "email_other","phone_home","phone_work","company_id"]
+  500.times do |i|
     row =[]
     id = id_pool.pop
     customer_ids << id
