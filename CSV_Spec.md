@@ -3,9 +3,8 @@ CSV Spec:
 Companies:
 
 Every company has 1 value for each of these fields: id, name. If you do not have
-something for the id field, you can just use a serial number, i.e. 1,2,3...
+something for the id field, you can just use a serial number, i.e. 1,2,3...  
 
- 
 
 Every company can have multiple domains mapped to it.  The domain field should
 be a comma separated list of domains that belong to the company.  
