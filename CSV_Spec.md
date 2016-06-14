@@ -10,8 +10,8 @@ Customers:
 
 Every customer has a maximum of 1 value for each of these fields: id,
 first\_name, last\_name, title and company\_id  
-Every customer can have multiple values for email, phone and address.  To
-accommodate this, we have adopted the format as follows:
+Every customer can have multiple values for email (10), phone (10) and address
+(5).  To accommodate this, we have adopted the format as follows:
 
 -   Emails - email\_home, email\_work, email\_mobile, email\_other
 
