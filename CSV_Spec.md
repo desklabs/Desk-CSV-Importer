@@ -42,7 +42,7 @@ Every customer can have multiple values for `email` (10), `phone` (10),
 -   Addresses - `address_home`, `address_work`, `address_other`
 
 You can use as many of each as needed. For example, if you have customers who
-have 2 mobile phone numbers, its OK to have 2 columns named “`phone_mobile`”.
+have 2 mobile phone numbers, its OK to have 2 columns named `phone_mobile`.
 
 Every customer can have multiple custom fields. You should have one column per
 custom field with the format:
