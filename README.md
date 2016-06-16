@@ -8,11 +8,8 @@ specified below into desk.com.
 
 createTestCSVs.rb will generate dummy CSV's with data that checks out.
 
-Requirements
-------------
-
--   \*nix/OSX based computer (this could change when I nail down Windows
-    instructions)
+Requirementsgit
+---------------
 
 -   Ruby 2.3.0
 
@@ -24,7 +21,8 @@ Requirements
 Installation
 ------------
 
-There are a few requirements we should check before proceeding.
+There are a few requirements we should check before proceeding.  
+
 
 OSX
 ---
@@ -32,6 +30,11 @@ OSX
 Since you are using OSX, you already have Ruby installed. However, I recommend
 using a system called RVM to allow you to have multiple versions of Ruby and
 keep your project dependencies (gemsets) separate.
+
+### Git
+
+There are a couple ways to install Git.  The easiest is via the desktop app
+here: <https://desktop.github.com/>
 
 ### RVM
 
@@ -49,7 +52,34 @@ Now with RVM installed, we need to install a fresh version of Ruby:
 
 `rvm install 2.3.0`
 
-### Script setup
+ 
+
+Windows
+-------
+
+### Ruby
+
+Windows does not come with Ruby installed. Head over to
+<http://rubyinstaller.org/downloads/> and download and install Ruby 2.3.0 (or
+Ruby 2.3.0 x64 if you have a 64-bit computer)
+
+### Git
+
+As mentioned above, the easiest, and preferred was on installing git is to
+install the desktop app. This will also install a program called Git Shell.
+
+After the installer finishes, you should see a program called Git Shell on your
+desktop.  Open that up.  You should see a command prompt.  You will use Git
+Shell to run this script in the future.
+
+ 
+
+Script setup
+------------
+
+Navigate to your Desktop by typing:
+
+`cd ~\Desktop`
 
 Now, clone this repository:
 
