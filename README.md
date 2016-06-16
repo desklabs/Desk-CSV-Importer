@@ -24,8 +24,6 @@ Requirements
 Installation
 ------------
 
- 
-
 OSX
 ---
 
