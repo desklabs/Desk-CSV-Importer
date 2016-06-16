@@ -113,7 +113,19 @@ our credentials to the .env file.
 Usage
 -----
 
-Place your CSV files in the CSV\_Files folder. They should be named:
+ 
+
+To see if things are working, we can generate some test CSV files that will be
+in the proper format by running:
+
+`ruby createTestCSVs.rb`
+
+Check the CSV\_Files folder for the files.
+
+ 
+
+When you are ready to import your data, place your CSV files in the CSV\_Files
+folder. They should be named:
 
 -   customers.csv
 
