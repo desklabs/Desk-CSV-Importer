@@ -24,14 +24,14 @@ Requirements
 Installation
 ------------
 
-There are a few requirements we should check before proceeding. The instructions
-differ depending on which OS you are using.
+There are a few requirements we should check before proceeding.
 
 OSX
 ---
 
-If you are using OSX, you already have Ruby installed. However, I recommend
-using a system called RVM to allow you to have multiple versions of Ruby.
+Since you are using OSX, you already have Ruby installed. However, I recommend
+using a system called RVM to allow you to have multiple versions of Ruby and
+keep your project dependencies (gemsets) separate.
 
 ### RVM
 
