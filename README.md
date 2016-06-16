@@ -1,8 +1,7 @@
 Desk.com-CSV-to-Case
 ====================
 
-To import a CSV we are going to write a Ruby script to import CSV files as
-specified below into desk.com.
+These scripts will import CSV files as specified below into a desk.com account.
 
 <https://github.com/desklabs/Desk.com-CSV-to-Case/blob/master/CSV_Spec.md>
 
