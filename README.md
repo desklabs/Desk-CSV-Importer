@@ -121,6 +121,12 @@ Place your CSV files in the CSV\_Files folder. They should be named:
 
  
 
+If you are importing companies and customers, run:
+
 `ruby company_and_customer_import.rb`
 
  
+
+For customers only:
+
+`ruby customer_import.rb`
