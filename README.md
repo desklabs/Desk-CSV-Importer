@@ -7,8 +7,10 @@ These scripts will import CSV files as specified below into a desk.com account.
 
 createTestCSVs.rb will generate dummy CSV's with data that checks out.
 
-Requirementsgit
----------------
+ 
+
+Requirements
+------------
 
 -   Ruby 2.3.0
 
@@ -17,11 +19,12 @@ Requirementsgit
 -   git (The simplest way is to install the desktop app here:
     <https://desktop.github.com/>)
 
+ 
+
 Installation
 ------------
 
-There are a few requirements we should check before proceeding.  
-
+ 
 
 OSX
 ---
