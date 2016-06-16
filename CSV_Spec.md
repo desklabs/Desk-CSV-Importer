@@ -17,6 +17,11 @@ custom field with the format:
 
 -   `custom_fieldkey`
 
+If the custom field is a `list` type, you should validate that values in the
+source data exist within the list in Desk. If not, you either (1) need to map
+the value to an existing value when building the export data or (2) add the
+value to the list in Desk.
+
 | **Column Name**   | **Field Description**                 | **Desk Field** | **Data Type**                                                                         | **Required** | **Unique** | **Validations**      | **Example 1**    | **Example 2**               |
 |-------------------|---------------------------------------|----------------|---------------------------------------------------------------------------------------|--------------|------------|----------------------|------------------|-----------------------------|
 | `id`              |                                       | `id`           | String                                                                                | True         | True       |                      | 8764387          | Q3867                       |
