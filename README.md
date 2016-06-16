@@ -65,11 +65,11 @@ Ruby 2.3.0 x64 if you have a 64-bit computer)
 ### Git
 
 As mentioned above, the easiest, and preferred was on installing git is to
-install the desktop app. This will also install a program called Git Shell.
+install the desktop app. This will also install a program called Git Shell. You
+will use Git Shell to run this script in the future.
 
 After the installer finishes, you should see a program called Git Shell on your
-desktop.  Open that up.  You should see a command prompt.  You will use Git
-Shell to run this script in the future.
+desktop.  Open that up.  You should see a command prompt.
 
  
 
