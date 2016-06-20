@@ -89,7 +89,7 @@ Then cd into the directory:
 
 `cd Desk.com-CSV-to-Case`
 
-Since we have RVM installed, the files .ruby-version and .ruby-gemset will team
+Since we have RVM installed, the files .ruby-version and .ruby-gemset will tell
 RVM to always switch to the proper version and gemset when we enter the
 directory. A new gemset will be created for us the first time we enter the
 directory.
