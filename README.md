@@ -1,5 +1,5 @@
-Desk.com-CSV-to-Case
-====================
+Desk.com CSV Importer
+=====================
 
 These scripts will import CSV files as specified below into a desk.com account.
 
