@@ -7,7 +7,6 @@ These scripts will import CSV files as specified below into a desk.com account.
 
 createTestCSVs.rb will generate dummy CSV's with data that checks out.
 
- 
 
 Requirements
 ------------
