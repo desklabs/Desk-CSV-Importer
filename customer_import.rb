@@ -97,7 +97,6 @@ CSV.foreach(customer_csv_file, headers: true) do |row|
   rescue DeskApi::Error => e
     puts "Error creating customer: CSV Row: #{x}, Customer ID: #{row['id']} - #{e.errors}"
     customer_error_log.error "Error creating customer - CSV Row: #{x}, Customer ID: #{row['id']} - #{e.errors}"
-    binding.pry
   else
     puts "Success creating customer: CSV Row: #{x}, Customer ID: #{row['id']}"
   end
