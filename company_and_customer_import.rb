@@ -41,7 +41,7 @@ company_hash = {}
 # Loop through the company CSV file defined above
 ######
 x = 2
-CSV.foreach(company_csv_file, headers: true) do |row|
+CSV.foreach(company_csv_file, headers: true, :encoding => 'ISO-8859-1') do |row|
 
   # Store the name and id into our hash from before
   company_hash[row["Id"]] = row["Name"]

@@ -35,8 +35,8 @@ customer_csv_file = "./CSV_Files/customers.csv"
 ######
 # Loop through the customer CSV file defined above
 ######
-x=1
-CSV.foreach(customer_csv_file, headers: true) do |row|
+x=2
+CSV.foreach(customer_csv_file, headers: true, :encoding => 'ISO-8859-1') do |row|
 
   data = {
     first_name: row["first_name"],
