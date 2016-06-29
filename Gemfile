@@ -8,4 +8,7 @@ gem 'desk_api'
 gem 'faker'
 # HighLine is a high-level command-line IO library. (https://github.com/JEG2/highline)
 gem 'highline'
+# An IRB alternative and runtime developer console (http://pryrepl.org)
 gem 'pry'
+# simple version-number encapsulation
+gem 'version'
