@@ -8,7 +8,6 @@ GEM
       faraday (>= 0.8, < 1.0)
       simple_oauth (>= 0.1, < 0.3)
     dotenv (2.1.1)
-    easy_diff (1.0.0)
     faker (1.6.3)
       i18n (~> 0.5)
     faraday (0.9.2)
@@ -16,16 +15,11 @@ GEM
     highline (1.7.8)
     i18n (0.7.0)
     method_source (0.8.2)
-    multi_json (1.11.2)
     multipart-post (2.0.0)
-    parallel (1.8.0)
     pry (0.10.3)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    rollbar (2.10.0)
-      multi_json
-    ruby-progressbar (1.7.5)
     simple_oauth (0.2.0)
     slop (3.6.0)
 
@@ -35,13 +29,9 @@ PLATFORMS
 DEPENDENCIES
   desk_api
   dotenv
-  easy_diff
   faker
   highline
-  parallel (~> 1.8)
   pry
-  rollbar
-  ruby-progressbar
 
 BUNDLED WITH
-   1.11.2
+   1.12.5

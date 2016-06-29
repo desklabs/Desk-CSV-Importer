@@ -1,12 +1,14 @@
 source 'https://rubygems.org'
 
+# Loads environment variables from `.env`. (https://github.com/bkeepers/dotenv)
 gem 'dotenv'
-gem 'pry'
+# A lightweight, flexible client for the desk.com APIv2. (http://github.com/tstachl/desk_api)
 gem 'desk_api'
-gem 'highline'
+# Easily generate fake data (https://github.com/stympy/faker)
 gem 'faker'
-gem 'parallel', '~> 1.8'
-gem 'ruby-progressbar'
-#gem 'celluloid-pmap'
-gem 'easy_diff'
-gem 'rollbar'
+# HighLine is a high-level command-line IO library. (https://github.com/JEG2/highline)
+gem 'highline'
+# An IRB alternative and runtime developer console (http://pryrepl.org)
+gem 'pry'
+# simple version-number encapsulation
+gem 'version'

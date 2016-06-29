@@ -26,6 +26,73 @@ DeskApi.configure do |config|
 end
 
 #######
+# We are going to start by importing companies from this file.
+#######
+puts "Starting Companies"
+company_csv_file = "./CSV_Files/companies.csv"
+
+######
+# Since our cusrtomer CSV file only contains our Company ID from our old system,
+# we need to store each company's name and ID into an array for later use in customers
+######
+company_hash = {}
+
+######
+# Loop through the company CSV file defined above
+######
+x = 2
+CSV.foreach(company_csv_file, headers: true, :encoding => 'ISO-8859-1') do |row|
+
+  # Store the name and id into our hash from before
+  company_hash[row["Id"]] = row["Name"]
+
+  # Build our data hash to for the new company
+  data = {
+    name: row["name"],
+    external_id: row["id"],
+    domains: row["domains"].split(',')
+  }
+
+  # look for our custom fields and add them to the data hash if found
+  custom_fields = {}
+
+  row.to_h.each do |key, value|
+    if key.include? "custom_"
+      custom_fields[key.gsub("custom_","").to_sym] = value unless value.nil?
+    end
+  end
+
+  data[:custom_fields] = custom_fields unless custom_fields == {}
+
+  # look for any address_ columns and add them to the data hash
+  address_array = []
+
+  row.to_h.each do |key, value|
+    if key =~ /^address_/
+      type = key.gsub("address_","")
+      emails_array << {"type": type, "value": value} unless value.nil? or value == ""
+    end
+  end
+
+  data[:addresses] = address_array unless address_array == []
+
+  # create a company for the row
+  begin
+    new_company = DeskApi.companies.create(data)
+    # if it fails, log it in the error log
+  rescue DeskApi::Error => e
+    puts "Error creating company: CSV Row: #{x}, Company ID: #{row['id']} - #{e.errors}"
+    company_error_log.error "Error creating company: CSV Row: #{x}, Company ID: #{row['id']} - #{e.errors}"
+  else
+    puts "Success creating company: CSV Row: #{x}, Company ID: #{row['id']}"
+  end
+
+  x += 1
+
+end
+
+
+#######
 # Now, we will import our customers.  We will be using the hash form above to look
 # up the company name's for our customers.
 #######
@@ -35,14 +102,15 @@ customer_csv_file = "./CSV_Files/customers.csv"
 ######
 # Loop through the customer CSV file defined above
 ######
-x=2
-CSV.foreach(customer_csv_file, headers: true, :encoding => 'ISO-8859-1') do |row|
+x = 2
+CSV.foreach(customer_csv_file, headers: true) do |row|
 
   data = {
     first_name: row["first_name"],
     last_name: row["last_name"],
+    title: row["title"],
     external_id: row["id"],
-    title: row["title"]
+    company: company_hash[row["company_id"]]
   }
 
   # look for our custom fields and add them to the data hash if found
@@ -97,6 +165,7 @@ CSV.foreach(customer_csv_file, headers: true, :encoding => 'ISO-8859-1') do |row
   rescue DeskApi::Error => e
     puts "Error creating customer: CSV Row: #{x}, Customer ID: #{row['id']} - #{e.errors}"
     customer_error_log.error "Error creating customer - CSV Row: #{x}, Customer ID: #{row['id']} - #{e.errors}"
+    binding.pry
   else
     puts "Success creating customer: CSV Row: #{x}, Customer ID: #{row['id']}"
   end
