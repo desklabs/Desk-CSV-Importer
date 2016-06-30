@@ -7,7 +7,8 @@ These scripts will import CSV files as specified below into a desk.com account.
 
 createTestCSVs.rb will generate dummy CSV's with data that checks out.
 
-Please post any comments or questions on the [Issues Page] (https://github.com/desklabs/Desk-CSV-Importer/issues).
+Please post any comments or questions on the [Issues Page]
+(https://github.com/desklabs/Desk-CSV-Importer/issues).
 
 Requirements
 ------------
@@ -18,7 +19,6 @@ Requirements
 
 -   git (The simplest way is to install the desktop app here:
     <https://desktop.github.com/>)
-
 
 Installation
 ------------
@@ -32,8 +32,8 @@ keep your project dependencies (gemsets) separate.
 
 ### Git
 
-There are a couple ways to install Git.  The easiest is via the desktop app
-here: <https://desktop.github.com/>
+There are a couple ways to install Git. The easiest is via the desktop app here:
+<https://desktop.github.com/>
 
 ### RVM
 
@@ -44,6 +44,8 @@ terminal commands needed for installation:
 409B6B1796C275462A1703113804BB82D39DC0E3`
 
 `\curl -sSL https://get.rvm.io | bash -s stable`
+
+Now scroll down to Script Setup
 
 ### Ruby
 
@@ -69,7 +71,7 @@ install the desktop app. This will also install a program called Git Shell. You
 will use Git Shell to run this script in the future.
 
 After the installer finishes, you should see a program called Git Shell on your
-desktop.  Open that up.  You should see a command prompt.
+desktop. Open that up. You should see a command prompt.
 
  
 
