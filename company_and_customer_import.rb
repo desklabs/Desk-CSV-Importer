@@ -57,7 +57,7 @@ CSV.foreach(company_csv_file, headers: true, :encoding => 'ISO-8859-1') do |row|
   custom_fields = {}
 
   row.to_h.each do |key, value|
-    if key.include? "custom_"
+    if key =~ /^custom_/
       custom_fields[key.gsub("custom_","").to_sym] = value unless value.nil?
     end
   end
