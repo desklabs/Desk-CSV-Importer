@@ -158,7 +158,7 @@ CSV.foreach(customer_csv_file, headers: true) do |row|
     end
   end
 
-  data[:phones] = phones_array unless phones_array == []
+  data[:phone_numbers] = phones_array unless phones_array == []
 
   begin
     new_customer = DeskApi.customers.create(data)

@@ -49,7 +49,7 @@ CSV.foreach(customer_csv_file, headers: true, :encoding => 'ISO-8859-1') do |row
   custom_fields = {}
 
   row.to_h.each do |key, value|
-    if key.include? "custom_"
+    if key =~ /^custom_/
       custom_fields[key.gsub("custom_","").to_sym] = value unless value.nil? or value == ""
     end
   end
@@ -90,7 +90,7 @@ CSV.foreach(customer_csv_file, headers: true, :encoding => 'ISO-8859-1') do |row
     end
   end
 
-  data[:phones] = phones_array unless phones_array == []
+  data[:phone_numbers] = phones_array unless phones_array == []
 
   begin
     new_customer = DeskApi.customers.create(data)
