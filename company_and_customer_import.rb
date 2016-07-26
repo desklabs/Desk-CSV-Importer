@@ -70,7 +70,7 @@ CSV.foreach(company_csv_file, headers: true, :encoding => 'ISO-8859-1') do |row|
   row.to_h.each do |key, value|
     if key =~ /^address_/
       type = key.gsub("address_","")
-      emails_array << {"type": type, "value": value} unless value.nil? or value == ""
+      address_array << {"type": type, "value": value} unless value.nil? or value == ""
     end
   end
 
@@ -130,7 +130,7 @@ CSV.foreach(customer_csv_file, headers: true) do |row|
   row.to_h.each do |key, value|
     if key =~ /^address_/
       type = key.gsub("address_","")
-      emails_array << {"type": type, "value": value} unless value.nil? or value == ""
+      address_array << {"type": type, "value": value} unless value.nil? or value == ""
     end
   end
 
