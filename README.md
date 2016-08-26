@@ -80,7 +80,7 @@ Script setup
 
 Navigate to your Desktop by typing:
 
-`cd ~\Desktop`
+`cd ~/Desktop`
 
 Now, clone this repository:
 
