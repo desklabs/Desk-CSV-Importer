@@ -81,8 +81,13 @@ CSV.foreach(company_csv_file, headers: true, :encoding => 'ISO-8859-1') do |row|
     new_company = DeskApi.companies.create(data)
     # if it fails, log it in the error log
   rescue DeskApi::Error => e
-    puts "Error creating company: CSV Row: #{x}, Company ID: #{row['id']} - #{e.errors}"
-    company_error_log.error "Error creating company: CSV Row: #{x}, Company ID: #{row['id']} - #{e.errors}"
+    if e.errors
+      puts "Error creating company: CSV Row: #{x}, Company ID: #{row['id']} - #{e.errors}"
+      company_error_log.error "Error creating company: CSV Row: #{x}, Company ID: #{row['id']} - #{e.errors}"
+    else
+      puts "Error creating company: CSV Row: #{x}, Company ID: #{row['id']} - #{e}"
+      company_error_log.error "Error creating company: CSV Row: #{x}, Company ID: #{row['id']} - #{e}"
+    end
   else
     puts "Success creating company: CSV Row: #{x}, Company ID: #{row['id']}"
   end
