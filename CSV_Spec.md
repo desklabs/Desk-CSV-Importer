@@ -9,7 +9,7 @@ have something for the `id` field, you can just use a serial number, i.e.
 
 Note: Company `id` and `name` for must*​* be unique.
 
-Every company can have multiple domains mapped to it. The `domain` field should
+Every company can have multiple domains mapped to it. The `domains` field should
 be a comma separated list of domains that belong to the company.
 
 Every company can have multiple custom fields. You should have one column per
