@@ -49,9 +49,9 @@ CSV.foreach(company_csv_file, headers: true, :encoding => 'ISO-8859-1') do |row|
   # Build our data hash to for the new company
   data = {
     name: row["name"],
-    external_id: row["id"],
-    domains: row["domains"].split(',')
+    external_id: row["id"]
   }
+  data[:domains] = row["domains"].split(',') if row["domains"]
 
   # look for our custom fields and add them to the data hash if found
   custom_fields = {}
