@@ -93,6 +93,7 @@ CSV.foreach(customer_csv_file, headers: true, :encoding => 'ISO-8859-1') do |row
   data[:phone_numbers] = phones_array unless phones_array == []
 
   begin
+    puts "______________________________"
     new_customer = DeskApi.customers.create(data)
   rescue DeskApi::Error => e
     puts "Error creating customer: CSV Row: #{x}, Customer ID: #{row['id']} - #{e.errors}"
