@@ -106,7 +106,7 @@ and use bundler to install the rest of the gems we need from our Gemfile:
 The last step in configuration is to copy the .env.example file to .env and add
 our credentials to the .env file.
 
-`cp .env.example .env`
+`cp .env_example .env`
 
 `open .env` (this should open a text editor. Edit and save)
 
