@@ -96,8 +96,8 @@ CSV.foreach(customer_csv_file, headers: true, :encoding => 'ISO-8859-1') do |row
     puts "______________________________"
     new_customer = DeskApi.customers.create(data)
   rescue DeskApi::Error => e
-    puts "Error creating customer: CSV Row: #{x}, Customer ID: #{row['id']} - #{e.errors}"
-    customer_error_log.error "Error creating customer - CSV Row: #{x}, Customer ID: #{row['id']} - #{e.errors}"
+    puts "Error creating customer: CSV Row: #{x}, Customer ID: #{row['id']} - #{e}"
+    customer_error_log.error "Error creating customer - CSV Row: #{x}, Customer ID: #{row['id']} - #{e}"
   else
     puts "Success creating customer: CSV Row: #{x}, Customer ID: #{row['id']}"
   end
